@@ -8,17 +8,16 @@ require "kemal"
 module BirthdayBot  
   def self.main
     bds = Birthdays.new
-    schedule = Schedule::Runner.new
 
     Schedule.exception_handler do |ex|
       puts "Exception recued! #{ex.message}"
     end
 
-    schedule.every(:day, "10:00:00") do
+    Schedule.every(:day, "10:00:00") do
       bds.today.each do |b|
         msg = "Happy birthday <@#{b[1]}> ::birthday:"
         puts "Sending: #{msg}"
-        message = Slack::Message.new(msg, channel: "birthdays")
+        message = Slack::Message.new(msg, channel: ENV["CHANNEL"])
         message.send_to_hook ENV["WEBHOOK_URL"]
       end
     end

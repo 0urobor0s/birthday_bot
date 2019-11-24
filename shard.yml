@@ -1,0 +1,21 @@
+name: birthday_bot
+version: 0.1.0
+
+authors:
+  - 0urobor0s <0urobor0s@users.noreply.github.com>
+
+targets:
+  birthday_bot:
+    main: src/birthday_bot.cr
+
+crystal: 0.31.1
+
+license: MIT
+
+dependencies:
+  slack:
+    github: "manastech/crystal_slack"
+  schedule:
+    github: hugoabonizio/schedule.cr
+  kemal:
+    github: kemalcr/kemal
